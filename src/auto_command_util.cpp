@@ -28,6 +28,22 @@ void pushButton(Button button, int delay_after_pushing_msec, int loop_num)
     }
     delay(BUTTON_PUSHING_MSEC);
 }
+/**
+ * 自行新增的兩個按鈕同時按下 = " =
+ */
+void push2Button(Button button1, Button button2, int delay_after_pushing_msec, int loop_num)
+{
+    for (int i = 0; i < loop_num; i++)
+    {
+        SwitchController().pressButton(button1);
+        SwitchController().pressButton(button2);
+        delay(BUTTON_PUSHING_MSEC);
+        SwitchController().releaseButton(button1);
+        SwitchController().releaseButton(button2);
+        delay(delay_after_pushing_msec);
+    }
+    delay(BUTTON_PUSHING_MSEC);
+}
 
 /**
  * @brief Switchコントローラーの矢印ボタンを押す
